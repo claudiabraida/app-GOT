@@ -3,6 +3,7 @@ import { useState } from "react";
 
   function AddCharacter({onCharacter}) {
     const [nombre, setNombre] = useState("")
+    // const [imagen, setImagen] = useState("")
     // const [titulo, setTitulo] = useState("")
     // const [familia, setFamilia] = useState("")
     const [mensaje, setMensaje] = useState("")
@@ -19,8 +20,8 @@ import { useState } from "react";
         onCharacter(nombre)
         setMensaje("")
         setNombre("")
-        // setTitulo("")
-        // setFamilia("")
+        setTitulo("")
+        setFamilia("")
       }
     }
 

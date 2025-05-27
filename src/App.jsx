@@ -6,6 +6,7 @@ import charactersGOT from "./data.js";
 import Header from "./components/Header.jsx";
 import ContainCard from "./components/ContainCard.jsx";
 import AddCharacter from "./components/AddCharacter.jsx";
+import Banner from "./components/Banner.jsx";
 
 function App() {
   
@@ -13,33 +14,40 @@ const [characters, setCharacters] = useState(JSON.parse(localStorage.getItem("ch
 
   console.log(characters);
 
-  function onCharacter () {
+  function onCharacter (imageUrl) {
+   
     const newCharacter = {
 
     id: crypto.randomUUID(),
-    firstName: "",
-    lastName: "",
-    fullName: "",
-    title: "",
-    family: "",
-    image: "",
-    imageUrl: "",
+
+//     https://hp-api.onrender.com/api/characters
+// https://hp-api.onrender.com/
+//     // id:i,
+    // firstName: "",
+    // lastName: "",
+    // fullName: fullName,
+    // title: title,
+    // family: family,
+    // image: "",
+    imageUrl:imageUrl,
     }
     const newArray = [...characters, newCharacter]
-    localStorage.setItem("character", JSON.stringify(characters))
+    localStorage.setItem("character", JSON.stringify(newArray))
     setCharacters(newArray)
   }
 
   function deleteCharacter (id) {
-    localStorage.setItem("character", JSON.stringify(characters))
-    setCharacters(characters.filter(c => c.id != id))
+    const charactersFilter = characters.filter(c => c.id != id)
+    localStorage.setItem("character", JSON.stringify(charactersFilter))
+    setCharacters(charactersFilter)
 
   }
 
   return <>
    <Header />
-   <AddCharacter onCharacter={onCharacter}  />
-   <ContainCard characters={characters}  deleteCharacter={deleteCharacter} />
+   <Banner />
+   <AddCharacter onCharacter={onCharacter} />
+   <ContainCard characters={characters}  deleteCharacter={deleteCharacter}  />
   </>;
 }
 

@@ -1,10 +1,4 @@
 import Card from "./Card";
-
-
-
-
-
-
 function ContainCard({ characters, deleteCharacter}) {
   return (
     <div> 
